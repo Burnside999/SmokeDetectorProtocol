@@ -60,6 +60,10 @@ void InitProtocol() {
     EncodeLength[41] = 1; // 设置干扰源报警灵敏度
     // EncodeCallBack 建议在 main 中设置
     EncodeCallBack = malloc((MaxOpLength + 1) * sizeof(CallbackHandle));
+    for (int i = 0; i < MaxOpLength + 1; i++) {
+        EncodeCallBack[i].callback = NULL;
+        EncodeCallBack[i].aim = NULL;
+    }
 }
 
 ErrorCode parse(byte *package, int len) {
