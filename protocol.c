@@ -58,6 +58,7 @@ void InitProtocol() {
     EncodeLength[39] = 1; // 设置甲烷报警阈值
     EncodeLength[40] = 1; // 设置烟雾报警阈值
     EncodeLength[41] = 1; // 设置干扰源报警灵敏度
+    
     // EncodeCallBack 建议在 main 中设置
     EncodeCallBack = malloc((MaxOpLength + 1) * sizeof(CallbackHandle));
     for (int i = 0; i < MaxOpLength + 1; i++) {
