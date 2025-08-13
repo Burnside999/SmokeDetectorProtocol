@@ -9,7 +9,7 @@
 // Interface
 void InitProtocol() {
     // DecodeLength
-    int MaxOpLength = 38;
+    int MaxOpLength = 41;
     DecodeLength = malloc((MaxOpLength + 1) * sizeof(int));
     memset(DecodeLength, 0, (MaxOpLength + 1) * sizeof(int));
     DecodeLength[3] = 1;  // 写地址
