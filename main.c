@@ -1,5 +1,7 @@
 #include "protocol.h"
 
+#define TEST_ALL
+
 #if defined(__linux__)
 #include <sys/resource.h>
 size_t get_memory_usage() {
@@ -86,7 +88,7 @@ int main() {
     Package = NULL;
 
     // 测试 3 - 内存泄露测试
-#if defined(__linux__)
+#if defined(__linux__) && defined(TEST_ALL)
     size_t InitMemory = get_memory_usage();
     MakeWrite(22, 0, &Package, &len, 42);
     for (int i = 0; i < 10000; i++) {
