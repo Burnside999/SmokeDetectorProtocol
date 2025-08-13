@@ -6,6 +6,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define StartFlag 0x40
+#define EndFlag 0x23
+
 typedef unsigned char byte;
 
 typedef enum {

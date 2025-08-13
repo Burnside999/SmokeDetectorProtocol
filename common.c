@@ -61,9 +61,9 @@ ErrorCode DecodePackage(byte *input, int len, byte **output, int *address, int *
     for (int i = 0; i < len - 2; i++) {
         sum += (int)input[i]; // 先算 SUM
     }
-    if (input[0] != 0x40)
+    if (input[0] != StartFlag)
         return StartFlagNotFound;
-    if (input[len - 1] != 0x23)
+    if (input[len - 1] != EndFlag)
         return EndFlagNotFound;
     if ((sum & 0xff) != ParseB2I(input + len - 2, 1))
         return SumError;
@@ -86,8 +86,8 @@ void EncodePackage(byte *input, int *len, byte **output, int address, int op) {
     int length = 6 + EncodeLength[op];
     *len = length;
     *output = malloc(length * sizeof(byte));
-    (*output)[0] = 0x40;                            // 制作起始码
-    (*output)[length - 1] = 0x23;                   // 制作结束码
+    (*output)[0] = StartFlag;                       // 制作起始码
+    (*output)[length - 1] = EndFlag;                // 制作结束码
     ParseI2B(length, (*output) + 1, 1);             // 制作长度
     ParseI2B(address, (*output) + 2, 1);            // 制作地址
     ParseI2B(op, (*output) + 3, 1);                 // 制作操作符
