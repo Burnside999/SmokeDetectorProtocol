@@ -45,10 +45,14 @@ void BasicWrite(byte *param, int address, int op, ErrorCode err, void *aim, bool
     EncodePackage(ReturnCode, &PackageLength, &Package, address,
                   op);                   // 把各类信息编成数据包
     SendPackage(Package, PackageLength); // 发送数据包
-    free(ReturnCode);                    // 释放资源
-    free(Package);
-    ReturnCode = NULL;
-    Package = NULL;
+    if (ReturnCode) {                    // 释放资源
+        free(ReturnCode);   
+        ReturnCode = NULL;  
+    }
+    if (Package) {
+        free(Package);
+        Package = NULL;
+    }
 }
 
 void BasicRead(byte *param, int address, int op, ErrorCode err, void *aim, bool is_float) {
@@ -72,10 +76,14 @@ void BasicRead(byte *param, int address, int op, ErrorCode err, void *aim, bool 
     EncodePackage(ReturnCode, &PackageLength, &Package, address,
                   op);                   // 把各类信息编成数据包
     SendPackage(Package, PackageLength); // 发送数据包
-    free(ReturnCode);                    // 释放资源
-    free(Package);
-    ReturnCode = NULL;
-    Package = NULL;
+    if (ReturnCode) {                    // 释放资源
+        free(ReturnCode);   
+        ReturnCode = NULL;  
+    }
+    if (Package) {
+        free(Package);
+        Package = NULL;
+    }
 }
 
 void Reset(byte *param, int address, int op, ErrorCode err, void *aim, bool is_float) {
@@ -114,8 +122,12 @@ void BytesRead(byte *param, int address, int op, ErrorCode err, void *aim, bool 
     EncodePackage(ReturnCode, &PackageLength, &Package, address,
                   op);                   // 把各类信息编成数据包
     SendPackage(Package, PackageLength); // 发送数据包
-    free(ReturnCode);                    // 释放资源
-    free(Package);
-    ReturnCode = NULL;
-    Package = NULL;
+    if (ReturnCode) {                    // 释放资源
+        free(ReturnCode);   
+        ReturnCode = NULL;  
+    }
+    if (Package) {
+        free(Package);
+        Package = NULL;
+    }
 }
