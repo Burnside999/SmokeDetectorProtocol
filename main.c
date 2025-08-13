@@ -89,11 +89,13 @@ int main() {
 
     // 测试 3 - 内存泄露测试
 #if defined(__linux__)
+    size_t InitMemory = get_memory_usage();
     MakeWrite(22, 0, &Package, &len, 42);
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 10000; i++) {
         parse(Package, len);
-        printf("Epoch %d, Memory Used: %d KB.\n", i, get_memory_usage());
+        printf("Epoch %d, Memory Used: %ld KB.\n", i, get_memory_usage());
     }
+    printf("Before: %ld KB.\nAfter:  %ld KB.\n", InitMemory, get_memory_usage());
 #else
     printf("Skip Memory Test.\n");
 #endif
