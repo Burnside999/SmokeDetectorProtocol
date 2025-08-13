@@ -96,6 +96,8 @@ int main() {
         printf("Epoch %d, Memory Used: %ld KB.\n", i, get_memory_usage());
     }
     printf("Before: %ld KB.\nAfter:  %ld KB.\n", InitMemory, get_memory_usage());
+    free(Package);
+    Package = NULL;
 #else
     printf("Skip Memory Test.\n");
 #endif
