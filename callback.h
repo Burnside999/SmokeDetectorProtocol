@@ -12,7 +12,9 @@ typedef struct {
     BasicCallback callback;
 } CallbackHandle; // 回调句柄
 
-void RegisterCallback(CallbackHandle *handler, BasicCallback Func, void *aim, bool is_float); // 注册一个回调函数
+CallbackHandle *EncodeCallBack;
+
+void RegisterCallback(int op, BasicCallback Func, void *aim, bool is_float); // 注册一个回调函数
 
 void BasicWrite(byte *param, int address, int op, ErrorCode err, void *aim, bool is_float); // 基础的往 aim 中写入数据
 void BasicRead(byte *param, int address, int op, ErrorCode err, void *aim, bool is_float); // 基础的从 aim 中读出数据

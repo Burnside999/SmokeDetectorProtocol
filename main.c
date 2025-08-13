@@ -64,10 +64,8 @@ int temp = 18;  // 环境温度
 
 int main() {
     InitProtocol();
-    RegisterCallback(EncodeCallBack + 22, BasicWrite, &param4,
-                     false); // 写参数 4 的回调
-    RegisterCallback(EncodeCallBack + 17, BasicRead, &temp,
-                     false); // 读环境温度的回调
+    RegisterCallback(22, BasicWrite, &param4, false); // 写参数 4 的回调
+    RegisterCallback(17, BasicRead, &temp, false); // 读环境温度的回调
     // 模拟测试
 
     // 测试 1 - 写参数 4

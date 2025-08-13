@@ -3,9 +3,6 @@
 
 #include "callback.h"
 
-// Attribute
-CallbackHandle *EncodeCallBack;
-
 // Function
 
 /*
