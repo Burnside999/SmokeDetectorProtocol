@@ -1,5 +1,25 @@
 #include "protocol.h"
 
+#if defined(__linux__)
+#include <sys/resource.h>
+size_t get_memory_usage() {
+    FILE *file = fopen("/proc/self/status", "r");
+    if (!file)
+        return 0;
+
+    char line[128];
+    size_t memory = 0;
+    while (fgets(line, sizeof(line), file)) {
+        if (strncmp(line, "VmRSS:", 6) == 0) {
+            sscanf(line + 6, "%zu", &memory);
+            break;
+        }
+    }
+    fclose(file);
+    return memory;
+}
+#endif
+
 /*
     封装一个读指令
 */
@@ -67,5 +87,15 @@ int main() {
     free(Package);
     Package = NULL;
 
+    // 测试 3 - 内存泄露测试
+#if defined(__linux__)
+    MakeWrite(22, 0, &Package, &len, 42);
+    for (int i = 0; i < 1000; i++) {
+        parse(Package, len);
+        printf("Epoch %d, Memory Used: %d KB.\n", i, get_memory_usage());
+    }
+#else
+    printf("Skip Memory Test.\n");
+#endif
     return 0;
 }

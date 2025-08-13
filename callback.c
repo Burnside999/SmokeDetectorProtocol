@@ -46,8 +46,8 @@ void BasicWrite(byte *param, int address, int op, ErrorCode err, void *aim, bool
                   op);                   // 把各类信息编成数据包
     SendPackage(Package, PackageLength); // 发送数据包
     if (ReturnCode) {                    // 释放资源
-        free(ReturnCode);   
-        ReturnCode = NULL;  
+        free(ReturnCode);
+        ReturnCode = NULL;
     }
     if (Package) {
         free(Package);
@@ -77,8 +77,8 @@ void BasicRead(byte *param, int address, int op, ErrorCode err, void *aim, bool 
                   op);                   // 把各类信息编成数据包
     SendPackage(Package, PackageLength); // 发送数据包
     if (ReturnCode) {                    // 释放资源
-        free(ReturnCode);   
-        ReturnCode = NULL;  
+        free(ReturnCode);
+        ReturnCode = NULL;
     }
     if (Package) {
         free(Package);
@@ -123,8 +123,8 @@ void BytesRead(byte *param, int address, int op, ErrorCode err, void *aim, bool 
                   op);                   // 把各类信息编成数据包
     SendPackage(Package, PackageLength); // 发送数据包
     if (ReturnCode) {                    // 释放资源
-        free(ReturnCode);   
-        ReturnCode = NULL;  
+        free(ReturnCode);
+        ReturnCode = NULL;
     }
     if (Package) {
         free(Package);
