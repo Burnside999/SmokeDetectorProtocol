@@ -18,7 +18,7 @@
 
 // 注册一个回调句柄，用于管理回调函数的上下文信息，因为 ctx 很少，所以分开写了
 void RegisterCallback(int op, BasicCallback Func, void *aim, bool is_float) {
-    CallbackHandle* handler = EncodeCallBack + op;
+    CallbackHandle *handler = EncodeCallBack + op;
     handler->callback = Func;
     handler->aim = aim;
     handler->is_float = is_float;
